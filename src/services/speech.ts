@@ -22,14 +22,7 @@ class SpeechService implements IService {
         if (!result) {
             return null;
         }
-        if (result.status === 200) {
-            return this.parseModelFromJson(
-                HealthCheckModel.prototype,
-                result.data
-            );
-        }
-        // TODO: for other status codes
-        return null;
+        return this.parseModelFromJson(HealthCheckModel.prototype, result.data);
     }
 
     async asr(data: ASRRequestModel): Promise<ASRResponseModel | null> {
@@ -41,14 +34,7 @@ class SpeechService implements IService {
         if (!result) {
             return null;
         }
-        if (result.status === 200) {
-            return this.parseModelFromJson(
-                ASRResponseModel.prototype,
-                result.data
-            );
-        }
-        // TODO: for other status codes
-        return null;
+        return this.parseModelFromJson(ASRResponseModel.prototype, result.data);
     }
 }
 
