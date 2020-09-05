@@ -1,7 +1,7 @@
 import SpeechService from "../../src/services/speech";
 import HttpClient from "../../src/helpers/httpClient";
 import HealthCheckModel from "../../src/models/health.check";
-import { AsrResponseModel, AsrRequestModel } from "../../src/models/asr";
+import { ASRResponseModel, ASRRequestModel } from "../../src/models/asr";
 import RecognitionAudioModel from "../../src/models/recognition.audio";
 import RecognitionConfigModel from "../../src/models/recognition.config";
 import fs from "fs";
@@ -57,10 +57,10 @@ describe("success results", () => {
                     "default",
                     "general"
                 );
-                const model = new AsrRequestModel(config, audio);
+                const model = new ASRRequestModel(config, audio);
                 const result = await service.asr(model);
                 expect(result).not.toBeNull();
-                expect(result).toBeInstanceOf(AsrResponseModel);
+                expect(result).toBeInstanceOf(ASRResponseModel);
                 done();
             }
         );

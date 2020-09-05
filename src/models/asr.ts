@@ -2,7 +2,7 @@ import RecognitionConfigModel from "./recognition.config";
 import RecognitionAudioModel from "./recognition.audio";
 import RecognitionResultModel from "./recognition.result";
 
-export class AsrRequestModel {
+export class ASRRequestModel {
     config: RecognitionConfigModel;
     audio: RecognitionAudioModel;
 
@@ -12,7 +12,7 @@ export class AsrRequestModel {
     }
 }
 
-export class AsrResponseModel {
+export class ASRResponseModel {
     transcriptionId: string;
     duration: number;
     inferenceTime: number;

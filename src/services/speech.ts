@@ -1,7 +1,7 @@
 import HttpClient from "../helpers/httpClient";
 import IService from "../core/service";
 import HealthCheckModel from "../models/health.check";
-import { AsrRequestModel, AsrResponseModel } from "../models/asr";
+import { ASRRequestModel, ASRResponseModel } from "../models/asr";
 
 class SpeechService implements IService {
     httpClient: HttpClient;
@@ -32,7 +32,7 @@ class SpeechService implements IService {
         return null;
     }
 
-    async asr(data: AsrRequestModel): Promise<AsrResponseModel | null> {
+    async asr(data: ASRRequestModel): Promise<ASRResponseModel | null> {
         const result = await this.httpClient.request(
             "/speech/asr",
             "POST",
@@ -43,7 +43,7 @@ class SpeechService implements IService {
         }
         if (result.status === 200) {
             return this.parseModelFromJson(
-                AsrResponseModel.prototype,
+                ASRResponseModel.prototype,
                 result.data
             );
         }
