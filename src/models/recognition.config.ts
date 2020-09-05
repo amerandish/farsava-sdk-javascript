@@ -1,4 +1,4 @@
-export type AudioEncoding = "LINEAR16" | "WAV" | "MP3";
+import { AudioEncoding } from "./utils";
 
 export default class RecognitionConfigModel {
     audioEncoding: AudioEncoding;
