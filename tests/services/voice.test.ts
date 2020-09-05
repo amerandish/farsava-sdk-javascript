@@ -1,5 +1,5 @@
-import VoiceService from "../../src/services/voice";
-import HttpClient from "../../src/helpers/httpClient";
+import FarsavaSDK from "../../src/farsava";
+import BaseService from "../../src/core/service";
 import HealthCheckModel from "../../src/models/health.check";
 import { TTSRequestModel } from "../../src/models/tts";
 import TTSSynthesisInputModel from "../../src/models/tts.synthesis.input";
@@ -12,19 +12,16 @@ const BASE_URL = config.BaseUrl;
 const API_KEY = config.APIKey;
 const AUDIO_FILE_PATH = config.AudioPath;
 
-const httpClient = new HttpClient(API_KEY, BASE_URL);
-const service = new VoiceService(httpClient);
+const sdk = new FarsavaSDK({
+    baseUrl: BASE_URL,
+    apiKey: API_KEY,
+});
+const service = sdk.voice;
 
-describe("check http client and service", () => {
-    it("test client", () => {
-        expect(httpClient).not.toBeNull();
-        expect(httpClient.getApiKey()).toBe(API_KEY);
-        expect(httpClient.getBaseUrl()).toBe(BASE_URL);
-    });
+describe("check service", () => {
     it("test service", () => {
         expect(service).not.toBeNull();
-        expect(service.httpClient).not.toBeNull();
-        expect(service.httpClient).toBe(httpClient);
+        expect(service).toBeInstanceOf(BaseService);
     });
 });
 

@@ -1,17 +1,11 @@
 import HttpClient from "../helpers/httpClient";
-import IService from "../core/service";
+import BaseService from "../core/service";
 import HealthCheckModel from "../models/health.check";
 import { TTSRequestModel } from "../models/tts";
 
-class VoiceService implements IService {
-    httpClient: HttpClient;
+class VoiceService extends BaseService {
     constructor(httpClient: HttpClient) {
-        this.httpClient = httpClient;
-    }
-
-    private parseModelFromJson(pt, json) {
-        const instance = Object.create(pt);
-        return Object.assign(instance, json);
+        super(httpClient);
     }
 
     async healthCheck(): Promise<HealthCheckModel | null> {
