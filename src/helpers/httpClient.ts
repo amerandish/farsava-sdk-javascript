@@ -12,7 +12,7 @@ class HttpClient {
             timeout: 10e3,
             headers: {
                 Authorization: `bearer ${apiKey}`,
-                "Content-Type": "application/json",
+                "content-type": "application/json",
             },
         });
     }
@@ -25,20 +25,23 @@ class HttpClient {
     async request(
         url: string,
         method: AxiosRequestConfig["method"],
-        body: undefined | any = undefined
+        body: undefined | any = undefined,
+        responseType: AxiosRequestConfig["responseType"] | undefined = undefined
     ): Promise<AxiosResponse<any> | null> {
         try {
             const result = await this.client.request({
                 url: url,
                 method: method,
                 data: body,
+                responseType: responseType,
             });
             return result;
         } catch (error) {
             if (error.response) {
-                return error.response as AxiosResponse;
+                const response = error.response as AxiosResponse;
+                console.debug(response);
             }
-            return null;
+            throw error;
         }
     }
 }
