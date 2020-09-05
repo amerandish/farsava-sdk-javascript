@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "UMD",
+        "lib": ["ES2015", "DOM"],
+        "declaration": true,
+        "declarationDir": "./typings",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "moduleResolution": "Node",
+        "esModuleInterop": true
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}

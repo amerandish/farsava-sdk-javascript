@@ -1,0 +1,10 @@
+#
+node_modules
+dist
+typings
+
+#
+tests/data
+
+#
+package-lock.json

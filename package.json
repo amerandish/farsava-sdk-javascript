@@ -1,0 +1,31 @@
+{
+    "name": "farsava-sdk",
+    "version": "0.0.0",
+    "description": "farsava javascript sdk",
+    "main": "",
+    "scripts": {
+        "test": "jest"
+    },
+    "keywords": [
+        "NodeJs",
+        "Javascript",
+        "API",
+        "SDK",
+        "ASR",
+        "TTS",
+        "Farsava"
+    ],
+    "author": "Amin Taghikhani<amin76taghikhani@gmail.com>",
+    "devDependencies": {
+        "@types/axios": "^0.14.0",
+        "@types/jest": "^26.0.13",
+        "jest": "^26.4.2",
+        "ts-jest": "^26.3.0",
+        "ts-node": "^9.0.0",
+        "tslint": "^6.1.3",
+        "typescript": "^4.0.2"
+    },
+    "dependencies": {
+        "axios": "^0.20.0"
+    }
+}
