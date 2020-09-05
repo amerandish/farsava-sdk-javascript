@@ -2,9 +2,12 @@
     "name": "farsava-sdk",
     "version": "0.0.0",
     "description": "farsava javascript sdk",
-    "main": "",
+    "main": "release/farsava-sdk.min.js",
+    "types": "typings/farsava.d.d.ts",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "build": "webpack",
+        "build:prod": "webpack -p"
     },
     "keywords": [
         "NodeJs",
@@ -19,11 +22,16 @@
     "devDependencies": {
         "@types/axios": "^0.14.0",
         "@types/jest": "^26.0.13",
+        "copy-webpack-plugin": "^6.1.0",
+        "expose-loader": "^1.0.0",
         "jest": "^26.4.2",
         "ts-jest": "^26.3.0",
+        "ts-loader": "^8.0.3",
         "ts-node": "^9.0.0",
         "tslint": "^6.1.3",
-        "typescript": "^4.0.2"
+        "typescript": "^4.0.2",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
     },
     "dependencies": {
         "axios": "^0.20.0"

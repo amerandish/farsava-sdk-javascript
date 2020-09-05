@@ -2,7 +2,7 @@ import SpeechService from "./services/speech";
 import VoiceService from "./services/voice";
 import HttpClient from "./helpers/httpClient";
 
-export default class FarsavaSDK {
+class SDK {
     speech: SpeechService;
     voice: VoiceService;
     private httpClient: HttpClient;
@@ -22,4 +22,5 @@ export default class FarsavaSDK {
     }
 }
 
+export { SDK };
 export { HttpClient, SpeechService, VoiceService };
