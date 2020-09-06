@@ -1,7 +1,6 @@
 import HttpClient from "../helpers/httpClient";
 import BaseService from "../core/service";
-import HealthCheckModel from "../models/health.check";
-import { TTSRequestModel } from "../models/tts";
+import { TTSRequestModel, HealthCheckModel } from "../models";
 
 class VoiceService extends BaseService {
     constructor(httpClient: HttpClient) {

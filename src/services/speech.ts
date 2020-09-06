@@ -1,7 +1,6 @@
 import HttpClient from "../helpers/httpClient";
 import BaseService from "../core/service";
-import HealthCheckModel from "../models/health.check";
-import { ASRRequestModel, ASRResponseModel } from "../models/asr";
+import { ASRRequestModel, ASRResponseModel, HealthCheckModel } from "../models";
 
 class SpeechService extends BaseService {
     constructor(httpClient: HttpClient) {

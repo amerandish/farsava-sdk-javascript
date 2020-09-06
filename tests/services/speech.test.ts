@@ -1,10 +1,14 @@
-import FarsavaSDK from "../../src/farsava";
-import BaseService from "../../src/core/service";
-import HealthCheckModel from "../../src/models/health.check";
-import { ASRResponseModel, ASRRequestModel } from "../../src/models/asr";
-import RecognitionAudioModel from "../../src/models/recognition.audio";
-import RecognitionConfigModel from "../../src/models/recognition.config";
 import fs from "fs";
+
+import * as Farsava from "../../src/farsava";
+import BaseService from "../../src/core/service";
+import {
+    HealthCheckModel,
+    RecognitionAudioModel,
+    RecognitionConfigModel,
+    ASRRequestModel,
+    ASRResponseModel,
+} from "../../src/models";
 
 const config = require("../data/config.json");
 
@@ -12,7 +16,7 @@ const BASE_URL = config.BaseUrl;
 const API_KEY = config.APIKey;
 const AUDIO_FILE_PATH = config.AudioPath;
 
-const sdk = new FarsavaSDK({
+const sdk = new Farsava.SDK({
     baseUrl: BASE_URL,
     apiKey: API_KEY,
 });

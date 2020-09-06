@@ -1,10 +1,12 @@
-import FarsavaSDK from "../../src/farsava";
+import * as Farsava from "../../src/farsava";
 import BaseService from "../../src/core/service";
-import HealthCheckModel from "../../src/models/health.check";
-import { TTSRequestModel } from "../../src/models/tts";
-import TTSSynthesisInputModel from "../../src/models/tts.synthesis.input";
-import TTSAudioConfigModel from "../../src/models/tts.audio.config";
-import TTSVoiceConfigModel from "../../src/models/tts.voice.config";
+import {
+    HealthCheckModel,
+    TTSRequestModel,
+    TTSSynthesisInputModel,
+    TTSAudioConfigModel,
+    TTSVoiceConfigModel,
+} from "../../src/models";
 import fs from "fs";
 const config = require("../data/config.json");
 
@@ -12,7 +14,7 @@ const BASE_URL = config.BaseUrl;
 const API_KEY = config.APIKey;
 const AUDIO_FILE_PATH = config.AudioPath;
 
-const sdk = new FarsavaSDK({
+const sdk = new Farsava.SDK({
     baseUrl: BASE_URL,
     apiKey: API_KEY,
 });
