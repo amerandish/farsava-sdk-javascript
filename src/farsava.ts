@@ -5,8 +5,13 @@ import HttpClient from "./helpers/httpClient";
 class SDK {
     speech: Services.SpeechService;
     voice: Services.VoiceService;
+    live: Services.LiveService;
     private httpClient: HttpClient;
-    constructor(options: { baseUrl: string; apiKey: string }) {
+    constructor(options: {
+        baseUrl: string;
+        apiKey: string;
+        liveUrl?: string;
+    }) {
         if (!options) {
             throw new Error("options is required");
         }
@@ -19,6 +24,12 @@ class SDK {
         this.httpClient = new HttpClient(options.apiKey, options.baseUrl);
         this.speech = new Services.SpeechService(this.httpClient);
         this.voice = new Services.VoiceService(this.httpClient);
+        if (!!options.liveUrl) {
+            this.live = new Services.LiveService(
+                options.apiKey,
+                options.liveUrl
+            );
+        }
     }
 }
 
