@@ -107,17 +107,19 @@ const sdk = new Farsava.SDK({
     ```javascript
     try {
         const base64AudioData = "";
-        const config = new Farsava.Models.RecognitionConfigModel(
-            "LINEAR16",
-            16000,
-            "fa",
-            1,
-            true,
-            "default",
-            "general"
-        );
-        const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData);
-        const model = new Farsava.Models.ASRRequestModel(config, audio);
+        const config = new Farsava.Models.RecognitionConfigModel({
+            audioEncoding: "LINEAR16",
+            sampleRateHertz: 16000,
+            languageCode: "fa",
+            maxAlternatives: 1,
+            profanityFilter: true,
+            asrModel: "default",
+            languageModel: "general",
+        });
+        const audio = new Farsava.Models.RecognitionAudioModel({
+            data: base64AudioData,
+        });
+        const model = new Farsava.Models.ASRRequestModel({ config, audio });
         const response = await sdk.speech.asr(model);
         // response model type is Farsava.Models.ASRResponseModel
         // handle response
@@ -130,17 +132,19 @@ const sdk = new Farsava.SDK({
 
     ```javascript
     const base64AudioData = "";
-    const config = new Farsava.Models.RecognitionConfigModel(
-        "LINEAR16",
-        16000,
-        "fa",
-        1,
-        true,
-        "default",
-        "general"
-    );
-    const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData);
-    const model = new Farsava.Models.ASRRequestModel(config, audio);
+    const config = new Farsava.Models.RecognitionConfigModel({
+        audioEncoding: "LINEAR16",
+        sampleRateHertz: 16000,
+        languageCode: "fa",
+        maxAlternatives: 1,
+        profanityFilter: true,
+        asrModel: "default",
+        languageModel: "general",
+    });
+    const audio = new Farsava.Models.RecognitionAudioModel({
+        data: base64AudioData,
+    });
+    const model = new Farsava.Models.ASRRequestModel({ config, audio });
     sdk.speech
         .asr(model)
         .then((response) => {
@@ -215,26 +219,28 @@ const sdk = new Farsava.SDK({
     ```javascript
     try {
         const text = "";
-        const synth = new Farsava.Models.TTSSynthesisInputModel(text);
-        const voiceConfig = new Farsava.Models.TTSVoiceConfigModel(
-            "fa",
-            "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
-            "default",
-            "female"
-        );
-        const audioConfig = new Farsava.Models.TTSAudioConfigModel(
-            "LINEAR16",
-            1,
-            0,
-            0,
-            22050,
-            0
-        );
-        const model = new Farsava.Models.TTSRequestModel(
-            synth,
+        const synthesisInput = new Farsava.Models.TTSSynthesisInputModel({
+            text: text,
+        });
+        const voiceConfig = new Farsava.Models.TTSVoiceConfigModel({
+            languageCode: "fa",
+            voiceId: "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
+            name: "default",
+            gender: "female",
+        });
+        const audioConfig = new Farsava.Models.TTSAudioConfigModel({
+            audioEncoding: "LINEAR16",
+            speakingRate: 1,
+            pitch: 0,
+            volumeGainDb: 0,
+            sampleRateHertz: 22050,
+            bitRate: 0,
+        });
+        const model = new Farsava.Models.TTSRequestModel({
+            synthesisInput,
             voiceConfig,
-            audioConfig
-        );
+            audioConfig,
+        });
         const response = await sdk.voice.tts(model);
         // response model type is base64 string contain audio
         // handle response
@@ -247,26 +253,28 @@ const sdk = new Farsava.SDK({
 
     ```javascript
     const text = "";
-    const synth = new Farsava.Models.TTSSynthesisInputModel(text);
-    const voiceConfig = new Farsava.Models.TTSVoiceConfigModel(
-        "fa",
-        "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
-        "default",
-        "female"
-    );
-    const audioConfig = new Farsava.Models.TTSAudioConfigModel(
-        "LINEAR16",
-        1,
-        0,
-        0,
-        22050,
-        0
-    );
-    const model = new Farsava.Models.TTSRequestModel(
-        synth,
+    const synthesisInput = new Farsava.Models.TTSSynthesisInputModel({
+        text: text,
+    });
+    const voiceConfig = new Farsava.Models.TTSVoiceConfigModel({
+        languageCode: "fa",
+        voiceId: "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
+        name: "default",
+        gender: "female",
+    });
+    const audioConfig = new Farsava.Models.TTSAudioConfigModel({
+        audioEncoding: "LINEAR16",
+        speakingRate: 1,
+        pitch: 0,
+        volumeGainDb: 0,
+        sampleRateHertz: 22050,
+        bitRate: 0,
+    });
+    const model = new Farsava.Models.TTSRequestModel({
+        synthesisInput,
         voiceConfig,
-        audioConfig
-    );
+        audioConfig,
+    });
     sdk.speech
         .asr(model)
         .then((response) => {
