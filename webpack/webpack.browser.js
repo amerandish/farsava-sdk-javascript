@@ -14,7 +14,7 @@ module.exports = (_env, args) => {
     const IS_PROD = !!args.p;
     const MIN = !!args.m;
 
-    const BUILD_PATH = "../browser";
+    const BUILD_PATH = "../browser/src";
 
     let JS_FILE_NAME = "farsava-sdk.js";
 
