@@ -1,7 +1,6 @@
 <div dir='rtl'>
 
-Farsava Javascript SDK
-===========
+# Farsava Javascript SDK
 
 ## نصب
 
@@ -33,22 +32,23 @@ Farsava Javascript SDK
 const sdk = new Farsava.SDK({
     baseUrl: "<REST_API_BASEURL>",
     liveUrl: "<ASR_LIVE_URL>",
-    apiKey:  "<JWT_TOKEN>",
+    apiKey: "<JWT_TOKEN>",
 });
 ```
 
 </div>
 
 ## سرویس ها
------------
 
-- گفتار به نوشتار
-- نوشتار به گفتار
-- گفتار به نوشتار به صورت Live
+---
+
+-   گفتار به نوشتار
+-   نوشتار به گفتار
+-   گفتار به نوشتار به صورت Live
 
 ### مجموعه سرویس های گفتار به نوشتار
 
-- #### بررسی سلامت سرویس
+-   #### بررسی سلامت سرویس
 
 <br>
 
@@ -61,33 +61,35 @@ const sdk = new Farsava.SDK({
 
 <div dir='ltr'>
 
-- async/await
+-   async/await
 
     ```javascript
     try {
-        const response = await sdk.speech.healthCheck()
+        const response = await sdk.speech.healthCheck();
         // response model type is Farsava.Models.HealthCheckModel
         // handle response
-    } catch(err){
+    } catch (err) {
         // handle error
     }
     ```
 
-- then/catch
+-   then/catch
 
     ```javascript
-    sdk.speech.healthCheck()
-    .then(response=>{
-        // response model type is Farsava.Models.HealthCheckModel
-        // handle response
-    }).catch(err=>{
-        // handle error
-    })
+    sdk.speech
+        .healthCheck()
+        .then((response) => {
+            // response model type is Farsava.Models.HealthCheckModel
+            // handle response
+        })
+        .catch((err) => {
+            // handle error
+        });
     ```
 
 </div>
 
-- #### تبدیل گفتار به نوشتار برای فایل های صوتی با زمان کمتر از ۱۵ ثانیه
+-   #### تبدیل گفتار به نوشتار برای فایل های صوتی با زمان کمتر از ۱۵ ثانیه
 
 <br>
 
@@ -100,55 +102,61 @@ const sdk = new Farsava.SDK({
 
 <div dir='ltr'>
 
-- async/await
+-   async/await
 
     ```javascript
     try {
-        const base64AudioData = ''
-        const config = new Farsava.Models.RecognitionConfigModel("LINEAR16",
-                    16000,
-                    "fa",
-                    1,
-                    true,
-                    "default",
-                    "general")
-        const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData)
-        const model = new Farsava.Models.ASRRequestModel(config, audio)
-        const response = await sdk.speech.asr(model)
+        const base64AudioData = "";
+        const config = new Farsava.Models.RecognitionConfigModel(
+            "LINEAR16",
+            16000,
+            "fa",
+            1,
+            true,
+            "default",
+            "general"
+        );
+        const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData);
+        const model = new Farsava.Models.ASRRequestModel(config, audio);
+        const response = await sdk.speech.asr(model);
         // response model type is Farsava.Models.ASRResponseModel
         // handle response
-    } catch(err){
+    } catch (err) {
         // handle error
     }
     ```
 
-- then/catch
+-   then/catch
 
     ```javascript
-    const base64AudioData = ''
-    const config = new Farsava.Models.RecognitionConfigModel("LINEAR16",
-                16000,
-                "fa",
-                1,
-                true,
-                "default",
-                "general")
-    const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData)
-    const model = new Farsava.Models.ASRRequestModel(config, audio)
-    sdk.speech.asr(model)
-    .then(response=>{
-        // response model type is Farsava.Models.ASRResponseModel
-        // handle response
-    }).catch(err=>{
-        // handle error
-    })
+    const base64AudioData = "";
+    const config = new Farsava.Models.RecognitionConfigModel(
+        "LINEAR16",
+        16000,
+        "fa",
+        1,
+        true,
+        "default",
+        "general"
+    );
+    const audio = new Farsava.Models.RecognitionAudioModel(base64AudioData);
+    const model = new Farsava.Models.ASRRequestModel(config, audio);
+    sdk.speech
+        .asr(model)
+        .then((response) => {
+            // response model type is Farsava.Models.ASRResponseModel
+            // handle response
+        })
+        .catch((err) => {
+            // handle error
+        });
     ```
 
 </div>
 
 ### مجموعه سرویس های نوشتار به گفتار
 
-- #### بررسی سلامت سرویس
+-   #### بررسی سلامت سرویس
 
 <br>
 
@@ -161,33 +169,35 @@ const sdk = new Farsava.SDK({
 
 <div dir='ltr'>
 
-- async/await
+-   async/await
 
     ```javascript
     try {
-        const response = await sdk.voice.healthCheck()
+        const response = await sdk.voice.healthCheck();
         // response model type is Farsava.Models.HealthCheckModel
         // handle response
-    } catch(err){
+    } catch (err) {
         // handle error
     }
     ```
 
-- then/catch
+-   then/catch
 
     ```javascript
-    sdk.voice.healthCheck()
-    .then(response=>{
-        // response model type is Farsava.Models.HealthCheckModel
-        // handle response
-    }).catch(err=>{
-        // handle error
-    })
+    sdk.voice
+        .healthCheck()
+        .then((response) => {
+            // response model type is Farsava.Models.HealthCheckModel
+            // handle response
+        })
+        .catch((err) => {
+            // handle error
+        });
     ```
 
 </div>
 
-- #### تبدیل نوشتار به گفتار
+-   #### تبدیل نوشتار به گفتار
 
 <br>
 
@@ -200,11 +210,11 @@ const sdk = new Farsava.SDK({
 
 <div dir='ltr'>
 
-- async/await
+-   async/await
 
     ```javascript
     try {
-        const text = ''
+        const text = "";
         const synth = new Farsava.Models.TTSSynthesisInputModel(text);
         const voiceConfig = new Farsava.Models.TTSVoiceConfigModel(
             "fa",
@@ -220,19 +230,23 @@ const sdk = new Farsava.SDK({
             22050,
             0
         );
-        const model = new Farsava.Models.TTSRequestModel(synth, voiceConfig,  audioConfig);
-        const response = await sdk.voice.tts(model)
+        const model = new Farsava.Models.TTSRequestModel(
+            synth,
+            voiceConfig,
+            audioConfig
+        );
+        const response = await sdk.voice.tts(model);
         // response model type is base64 string contain audio
         // handle response
-    } catch(err){
+    } catch (err) {
         // handle error
     }
     ```
 
-- then/catch
+-   then/catch
 
     ```javascript
-    const text = ''
+    const text = "";
     const synth = new Farsava.Models.TTSSynthesisInputModel(text);
     const voiceConfig = new Farsava.Models.TTSVoiceConfigModel(
         "fa",
@@ -248,21 +262,27 @@ const sdk = new Farsava.SDK({
         22050,
         0
     );
-    const model = new Farsava.Models.TTSRequestModel(synth, voiceConfig, audioConfig);
-    sdk.speech.asr(model)
-    .then(response=>{
-        // response model type is base64 string contain audio
-        // handle response
-    }).catch(err=>{
-        // handle error
-    })
+    const model = new Farsava.Models.TTSRequestModel(
+        synth,
+        voiceConfig,
+        audioConfig
+    );
+    sdk.speech
+        .asr(model)
+        .then((response) => {
+            // response model type is base64 string contain audio
+            // handle response
+        })
+        .catch((err) => {
+            // handle error
+        });
     ```
 
 </div>
 
 ### مجموعه سرویس های گفتار به نوشتار Live
 
-- #### تبدیل گفتار به نوشتار
+-   #### تبدیل گفتار به نوشتار
 
 <br>
 
@@ -274,30 +294,30 @@ const sdk = new Farsava.SDK({
 <br>
 <div dir='ltr'>
 
-- open socket connection
+-   open socket connection
 
     ```javascript
-    sdk.live.openConnection((err, data)=>{
-        console.log('err',err)
-        console.log('data', data)
-    })
+    sdk.live.openConnection((err, data) => {
+        console.log("err", err);
+        console.log("data", data);
+    });
     ```
 
-- send with interval
+-   send with interval
 
     ```javascript
-    const CHUNK_SIZE = 16000
-    const INTERVAL_DURATION = 1000 // in milliseconds
-    sdk.live.sendChunkAndInterval(base64AudioData)
+    const CHUNK_SIZE = 16000;
+    const INTERVAL_DURATION = 1000; // in milliseconds
+    sdk.live.sendChunkAndInterval(base64AudioData);
     ```
 
 </div>
 
 ## مدل ها
 
-- مدل نتیجه درخواست سلامت سرویس (Farsava.Models.HealthCheckModel)
+-   مدل نتیجه درخواست سلامت سرویس (Farsava.Models.HealthCheckModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field   | Type   | Required | Accept Values |
     | ------- | ------ | -------- | ------------- |
@@ -305,48 +325,48 @@ const sdk = new Farsava.SDK({
     | message | string | &check;  |               |
     | version | string | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.ASRRequestModel)
+-   مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.ASRRequestModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field  | Type                                  | Required | Accept Values |
     | ------ | ------------------------------------- | -------- | ------------- |
     | config | Farsava.Models.RecognitionConfigModel | &check;  |               |
     | audio  | Farsava.Models.RecognitionAudioModel  | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionConfigModel)
+-   مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionConfigModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
-    | Field           | Type    | Required | Accept Values                      |
-    | --------------- | ------- | -------- | ---------------------------------- |
-    | audioEncoding   | string  | &check;  | `"LINEAR16", "MP3", "OGG", "FLAC"` |
-    | sampleRateHertz | number  | &check;  |                                    |
-    | languageCode    | string  | &check;  | `"fa"`                             |
-    | maxAlternatives | number  | &check;  |                                    |
-    | profanityFilter | boolean | &check;  |                                    |
-    | asrModel        | string  | &check;  |                                    |
-    | languageModel   | string  | &check;  |                                    |
+    | Field           | Type    | Required | Accept Values |
+    | --------------- | ------- | -------- | ------------- |
+    | audioEncoding   | string  | &check;  | `"LINEAR16"`  |
+    | sampleRateHertz | number  | &check;  | `16000`       |
+    | languageCode    | string  | &check;  | `"fa"`        |
+    | maxAlternatives | number  | &check;  | `1`           |
+    | profanityFilter | boolean | &check;  | `true`        |
+    | asrModel        | string  | &check;  | `"default"`   |
+    | languageModel   | string  | &check;  | `"general"`   |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionAudioModel)
+-   مدل ارسال درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionAudioModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field | Type   | Required | Accept Values |
     | ----- | ------ | -------- | ------------- |
     | data  | string | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.ASRResponseModel)
+-   مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.ASRResponseModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field           | Type                                         | Required | Accept Values |
     | --------------- | -------------------------------------------- | -------- | ------------- |
@@ -356,11 +376,11 @@ const sdk = new Farsava.SDK({
     | status          | string                                       | &check;  |               |
     | results         | Array[Farsava.Models.RecognitionResultModel] | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionResultModel)
+-   مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionResultModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field      | Type                                       | Required | Accept Values |
     | ---------- | ------------------------------------------ | -------- | ------------- |
@@ -368,11 +388,11 @@ const sdk = new Farsava.SDK({
     | confidence | number                                     | &check;  |               |
     | words      | Array[Farsava.Models.RecognitionWordModel] | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionWordModel)
+-   مدل نتیجه درخواست به سامانه تبدیل گفتار به نوشتار (Farsava.Models.RecognitionWordModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field      | Type   | Required | Accept Values |
     | ---------- | ------ | -------- | ------------- |
@@ -381,11 +401,11 @@ const sdk = new Farsava.SDK({
     | word       | string | &check;  |               |
     | confidence | number | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSRequestModel)
+-   مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSRequestModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field          | Type                                  | Required | Accept Values |
     | -------------- | ------------------------------------- | -------- | ------------- |
@@ -393,21 +413,21 @@ const sdk = new Farsava.SDK({
     | voiceConfig    | Farsava.Models.TTSVoiceConfigModel    | &check;  |               |
     | audioConfig    | Farsava.Models.TTSAudioConfigModel    | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSSynthesisInputModel)
+-   مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSSynthesisInputModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field | Type   | Required | Accept Values |
     | ----- | ------ | -------- | ------------- |
     | text  | string | &check;  |               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSVoiceConfigModel)
+-   مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSVoiceConfigModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field        | Type   | Required | Accept Values                            |
     | ------------ | ------ | -------- | ---------------------------------------- |
@@ -416,11 +436,11 @@ const sdk = new Farsava.SDK({
     | name         | string | &check;  | `"default"`                              |
     | gender       | string | &check;  | `"female"`                               |
 
-    </div>
+      </div>
 
-- مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSAudioConfigModel)
+-   مدل ارسال درخواست به سامانه تبدیل نوشتار به گفتار (Farsava.Models.TTSAudioConfigModel)
 
-    <div dir='ltr'>
+      <div dir='ltr'>
 
     | Field           | Type   | Required | Accept Values                      |
     | --------------- | ------ | -------- | ---------------------------------- |
@@ -431,7 +451,6 @@ const sdk = new Farsava.SDK({
     | sampleRateHertz | number | &check;  | `8000, 16000, 22050, 24000`        |
     | bitRate         | number | &check;  | `32, 64, 128, 198, 256, 320`       |
 
-    </div>
-
+      </div>
 
 </div>
