@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="targetFile" accept="audio/wav" />
+    <button id="btn">Submit</button>
+
+    <script src="../../src/farsava-sdk.min.js"></script>
+    <script>
+        const sdk = new Farsava.SDK({
+            baseUrl: "<REST_API_BASEURL>",
+            liveUrl: "<ASR_LIVE_URL>",
+            apiKey: "<JWT_TOKEN>",
+        });
+
+        function readFile(file, cb) {
+            const reader = new FileReader()
+            reader.onloadend = function () {
+                const data = /base64,(.+)/.exec(reader.result)[1]
+                cb(data)
+            }
+            reader.readAsDataURL(file)
+        }
+        document.getElementById('btn').addEventListener('click', e => {
+            try {
+                const targetFile = document.getElementById('targetFile')
+                console.log(targetFile)
+                if (!targetFile.files || !targetFile.files[0]) {
+                    alert('file not load')
+                }
+                readFile(targetFile.files[0], async (data) => {
+                    const audio = new Farsava.Models.RecognitionAudioModel({
+                        data
+                    });
+                    const config = new Farsava.Models.RecognitionConfigModel({
+                        audioEncoding: "LINEAR16",
+                        sampleRateHertz: 16000,
+                        languageCode: "fa",
+                        maxAlternatives: 1,
+                        profanityFilter: true,
+                        asrModel: "default",
+                        languageModel: "general",
+                    });
+                    const model = new Farsava.Models.ASRRequestModel({
+                        config,
+                        audio
+                    });
+                    const response = await sdk.speech.asr(model);
+                    // response model type is Farsava.Models.ASRResponseModel
+                    // handle response
+                })
+            } catch (err) {
+                // handle error
+            }
+        })
+
+    </script>
+</body>
+
+</html>
