@@ -36,22 +36,28 @@ describe("success results", () => {
     });
 
     it("tts", async (done) => {
-        const synth = new TTSSynthesisInputModel("سلام وقت بخیر");
-        const voiceConfig = new TTSVoiceConfigModel(
-            "fa",
-            "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
-            "default",
-            "female"
-        );
-        const audioConfig = new TTSAudioConfigModel(
-            "LINEAR16",
-            1,
-            0,
-            0,
-            22050,
-            0
-        );
-        const model = new TTSRequestModel(synth, voiceConfig, audioConfig);
+        const synthesisInput = new TTSSynthesisInputModel({
+            text: "سلام وقت بخیر",
+        });
+        const voiceConfig = new TTSVoiceConfigModel({
+            languageCode: "fa",
+            voiceId: "b6e9c993-729e-4e0f-955b-f229cf1f77ee",
+            name: "default",
+            gender: "female",
+        });
+        const audioConfig = new TTSAudioConfigModel({
+            audioEncoding: "LINEAR16",
+            speakingRate: 1,
+            pitch: 0,
+            volumeGainDb: 0,
+            sampleRateHertz: 22050,
+            bitRate: 0,
+        });
+        const model = new TTSRequestModel({
+            synthesisInput,
+            voiceConfig,
+            audioConfig,
+        });
         const result = await service.tts(model);
         expect(result).not.toBeNull();
         fs.writeFile(AUDIO_FILE_PATH, result, (err) => {

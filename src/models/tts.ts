@@ -6,13 +6,13 @@ export class TTSRequestModel {
     synthesisInput: TTSSynthesisInputModel;
     voiceConfig: TTSVoiceConfigModel;
     audioConfig: TTSAudioConfigModel;
-    constructor(
-        synthesisInput: TTSSynthesisInputModel,
-        voiceConfig: TTSVoiceConfigModel,
-        audioConfig: TTSAudioConfigModel
-    ) {
-        this.synthesisInput = synthesisInput;
-        this.voiceConfig = voiceConfig;
-        this.audioConfig = audioConfig;
+    constructor(options: {
+        synthesisInput: TTSSynthesisInputModel;
+        voiceConfig: TTSVoiceConfigModel;
+        audioConfig: TTSAudioConfigModel;
+    }) {
+        this.synthesisInput = options.synthesisInput;
+        this.voiceConfig = options.voiceConfig;
+        this.audioConfig = options.audioConfig;
     }
 }

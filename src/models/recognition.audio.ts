@@ -1,6 +1,6 @@
 export default class RecognitionAudioModel {
     data: string;
-    constructor(data: string) {
-        this.data = data;
+    constructor(options: { data: string }) {
+        this.data = options.data;
     }
 }

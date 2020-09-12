@@ -7,19 +7,19 @@ export default class TTSAudioConfigModel {
     volumeGainDb: number;
     sampleRateHertz: number;
     bitRate: number;
-    constructor(
-        audioEncoding: AudioEncoding,
-        speakingRate: number,
-        pitch: number,
-        volumeGainDb: number,
-        sampleRateHertz: number,
-        bitRate: number
-    ) {
-        this.audioEncoding = audioEncoding;
-        this.speakingRate = speakingRate;
-        this.pitch = pitch;
-        this.volumeGainDb = volumeGainDb;
-        this.sampleRateHertz = sampleRateHertz;
-        this.bitRate = bitRate;
+    constructor(options: {
+        audioEncoding: AudioEncoding;
+        speakingRate: number;
+        pitch: number;
+        volumeGainDb: number;
+        sampleRateHertz: number;
+        bitRate: number;
+    }) {
+        this.audioEncoding = options.audioEncoding;
+        this.speakingRate = options.speakingRate;
+        this.pitch = options.pitch;
+        this.volumeGainDb = options.volumeGainDb;
+        this.sampleRateHertz = options.sampleRateHertz;
+        this.bitRate = options.bitRate;
     }
 }

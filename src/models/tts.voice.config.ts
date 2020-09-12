@@ -3,15 +3,15 @@ export default class TTSVoiceConfigModel {
     voiceId: string;
     name: string;
     gender: string;
-    constructor(
-        languageCode: string,
-        voiceId: string,
-        name: string,
-        gender: string
-    ) {
-        this.languageCode = languageCode;
-        this.voiceId = voiceId;
-        this.name = name;
-        this.gender = gender;
+    constructor(options: {
+        languageCode: string;
+        voiceId: string;
+        name: string;
+        gender: string;
+    }) {
+        this.languageCode = options.languageCode;
+        this.voiceId = options.voiceId;
+        this.name = options.name;
+        this.gender = options.gender;
     }
 }

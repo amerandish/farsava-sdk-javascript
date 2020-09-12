@@ -1,6 +1,6 @@
 export default class TTSSynthesisInputModel {
     text: string;
-    constructor(text: string) {
-        this.text = text;
+    constructor(options: { text: string }) {
+        this.text = options.text;
     }
 }

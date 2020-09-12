@@ -48,17 +48,17 @@ describe("success results", () => {
                     console.log(err);
                     return done();
                 }
-                const audio = new RecognitionAudioModel(data);
-                const config = new RecognitionConfigModel(
-                    "LINEAR16",
-                    16000,
-                    "fa",
-                    1,
-                    true,
-                    "default",
-                    "general"
-                );
-                const model = new ASRRequestModel(config, audio);
+                const audio = new RecognitionAudioModel({ data });
+                const config = new RecognitionConfigModel({
+                    audioEncoding: "LINEAR16",
+                    sampleRateHertz: 16000,
+                    languageCode: "fa",
+                    maxAlternatives: 1,
+                    profanityFilter: true,
+                    asrModel: "default",
+                    languageModel: "general",
+                });
+                const model = new ASRRequestModel({ config, audio });
                 const result = await service.asr(model);
                 expect(result).not.toBeNull();
                 expect(result).toBeInstanceOf(ASRResponseModel);

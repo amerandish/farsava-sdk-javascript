@@ -6,9 +6,12 @@ export class ASRRequestModel {
     config: RecognitionConfigModel;
     audio: RecognitionAudioModel;
 
-    constructor(config: RecognitionConfigModel, audio: RecognitionAudioModel) {
-        this.config = config;
-        this.audio = audio;
+    constructor(options: {
+        config: RecognitionConfigModel;
+        audio: RecognitionAudioModel;
+    }) {
+        this.config = options.config;
+        this.audio = options.audio;
     }
 }
 
