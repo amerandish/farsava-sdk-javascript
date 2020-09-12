@@ -8,8 +8,8 @@
     "license": "LGPL-3.0-or-later",
     "scripts": {
         "test": "jest",
-        "build": "webpack",
-        "build:prod": "webpack -p"
+        "build:browser": "webpack --config webpack/webpack.browser.js -p -m",
+        "build:browser:debug": "webpack --config webpack/webpack.browser.js"
     },
     "keywords": [
         "NodeJs",

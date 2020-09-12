@@ -1,8 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const pkg = require("./package.json");
+const pkg = require("../package.json");
 const banner =
     "\n" +
     pkg.name +
@@ -21,7 +20,7 @@ module.exports = (_env, args) => {
     const IS_PROD = !!args.p;
     const MIN = !!args.m;
 
-    const BUILD_PATH = "dist";
+    const BUILD_PATH = "../browser";
 
     let JS_FILE_NAME = "farsava-sdk.js";
 
@@ -32,26 +31,14 @@ module.exports = (_env, args) => {
         new webpack.optimize.ModuleConcatenationPlugin(),
     ];
 
-    // if (IS_PROD) {
-    //     plugins.push(
-    //         new CopyWebpackPlugin({
-    //             patterns: [
-    //                 {
-    //                     from: "../typings/farsava-sdk.d.ts",
-    //                     to: "../release/farsava-sdk.d.ts",
-    //                 },
-    //             ],
-    //         })
-    //     );
-    // }
     if (MIN) {
         JS_FILE_NAME = "farsava-sdk.min.js";
     }
 
     return {
         mode: IS_PROD ? "production" : "development",
-        context: path.resolve(__dirname, "src"),
-        entry: "./farsava.ts",
+        context: path.resolve(__dirname, "../src"),
+        entry: "../src/farsava.ts",
         plugins,
         optimization: {
             minimize: MIN,
