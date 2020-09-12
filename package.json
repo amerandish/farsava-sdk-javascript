@@ -20,7 +20,7 @@
         "TTS",
         "Farsava"
     ],
-    "author": "Amin Taghikhani<amin76taghikhani@gmail.com>",
+    "author": "Amin Taghikhani<amin@amerandish.com, amin76taghikhani@gmail.com>",
     "devDependencies": {
         "@types/axios": "^0.14.0",
         "@types/jest": "^26.0.13",

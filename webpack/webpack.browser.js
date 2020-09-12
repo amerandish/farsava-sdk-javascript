@@ -3,19 +3,13 @@ const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 const pkg = require("../package.json");
 const banner =
-    "\n" +
-    pkg.name +
-    " -  " +
-    pkg.version +
-    "\n" +
-    pkg.author +
-    "\n" +
-    pkg.homepage +
-    "\n" +
-    "Under " +
-    pkg.license +
-    " license \n" +
-    "\n";
+    `\n ${pkg.name}` +
+    `\n version : ${pkg.version}` +
+    "\n company : AmerAndish Hoshmand <amerandish.com>" +
+    `\n author : ${pkg.author}` +
+    `\n licence : ${pkg.license}` +
+    `\n ${pkg.homepage && pkg.homepage}`;
+
 module.exports = (_env, args) => {
     const IS_PROD = !!args.p;
     const MIN = !!args.m;
@@ -52,7 +46,7 @@ module.exports = (_env, args) => {
             path: path.resolve(__dirname, BUILD_PATH),
             filename: JS_FILE_NAME,
             library: "Farsava",
-            libraryTarget: "umd2",
+            libraryTarget: "umd",
         },
         resolve: {
             extensions: [".ts", ".js"],
