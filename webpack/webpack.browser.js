@@ -14,16 +14,13 @@ module.exports = (_env, args) => {
     const IS_PROD = !!args.p;
     const MIN = !!args.m;
 
-    const BUILD_PATH = "../browser/src";
+    const BUILD_PATH = "../dist-browser";
 
     let JS_FILE_NAME = "farsava-sdk.js";
 
     const devtool = IS_PROD ? false : "source-map";
 
-    const plugins = [
-        new webpack.BannerPlugin(banner),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-    ];
+    const plugins = [new webpack.BannerPlugin(banner)];
 
     if (MIN) {
         JS_FILE_NAME = "farsava-sdk.min.js";
@@ -41,6 +38,7 @@ module.exports = (_env, args) => {
                     extractComments: false,
                 }),
             ],
+            concatenateModules: true,
         },
         output: {
             path: path.resolve(__dirname, BUILD_PATH),
