@@ -1,9 +1,9 @@
 #
 node_modules
 dist
-browser/src
 typings
 release
+lib
 
 #
 tests/data
