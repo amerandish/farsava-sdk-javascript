@@ -1,7 +1,7 @@
 import * as Services from "./services";
 import * as Models from "./models";
-import HttpClient from "./helpers/httpClient";
-
+import HttpClient from "./helpers/http.client";
+import VoiceRecorder from "./helpers/voice.recorder";
 class SDK {
     speech: Services.SpeechService;
     voice: Services.VoiceService;
@@ -35,4 +35,5 @@ class SDK {
 
 export { SDK };
 export { HttpClient };
+export { VoiceRecorder };
 export { Models, Services };

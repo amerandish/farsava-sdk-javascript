@@ -1,4 +1,4 @@
-import HttpClient from "../helpers/httpClient";
+import HttpClient from "../helpers/http.client";
 
 export default abstract class BaseService {
     protected httpClient: HttpClient;

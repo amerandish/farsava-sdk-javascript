@@ -1,4 +1,4 @@
-import HttpClient from "../helpers/httpClient";
+import HttpClient from "../helpers/http.client";
 import BaseService from "../core/service";
 import { TTSRequestModel, HealthCheckModel } from "../models";
 
