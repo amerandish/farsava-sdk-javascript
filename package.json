@@ -8,6 +8,8 @@
     "license": "LGPL-3.0-or-later",
     "scripts": {
         "test": "jest",
+        "prepare": "npm run build",
+        "build": "npx tsc",
         "build:browser": "webpack --config webpack/webpack.browser.js -p -m",
         "build:browser:debug": "webpack --config webpack/webpack.browser.js"
     },
