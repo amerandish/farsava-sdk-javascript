@@ -15,10 +15,10 @@ class LiveService {
         if (this.client) throw new Error("client is already created");
         this.client = new WebSocket(`${this.baseUrl}?jwt=${this.apiKey}`);
         const self = this;
-        this.client.onopen = function (ev) {
+        this.client.onopen = function () {
             console.log("connection is open");
         };
-        this.client.onclose = function (ev) {
+        this.client.onclose = function () {
             console.log("connection is close");
             self.client = null;
         };
@@ -38,8 +38,8 @@ class LiveService {
     }
 
     convertBase64ToArrayBuffer(base64) {
-        var arrayBuffer = new ArrayBuffer(base64.length);
-        var byteNumbers = new Uint8Array(arrayBuffer);
+        const arrayBuffer = new ArrayBuffer(base64.length);
+        const byteNumbers = new Uint8Array(arrayBuffer);
         for (let i = 0; i < base64.length; i++) {
             byteNumbers[i] = base64.charCodeAt(i);
         }
@@ -59,9 +59,8 @@ class LiveService {
         if (!this.client) throw new Error("client is not ready");
         const buffer = this.convertBase64ToArrayBuffer(base64Data);
         const { client } = this;
-        let interval;
         let index = 0;
-        interval = setInterval(() => {
+        const interval = setInterval(() => {
             const begin = index;
             let end = index + chunkSize;
             if (end > buffer.byteLength) {

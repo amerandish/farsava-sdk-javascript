@@ -11,7 +11,8 @@
         "prepare": "npm run build",
         "build": "npx tsc",
         "build:browser": "webpack --config webpack/webpack.browser.js -p -m",
-        "build:browser:debug": "webpack --config webpack/webpack.browser.js"
+        "build:browser:debug": "webpack --config webpack/webpack.browser.js",
+        "lint:src": "eslint src/ --ext .ts"
     },
     "keywords": [
         "Farsava",
@@ -26,7 +27,10 @@
     "devDependencies": {
         "@types/axios": "^0.14.0",
         "@types/jest": "^26.0.13",
+        "@typescript-eslint/eslint-plugin": "^4.1.1",
+        "@typescript-eslint/parser": "^4.1.1",
         "copy-webpack-plugin": "^6.1.0",
+        "eslint": "^7.9.0",
         "jest": "^26.4.2",
         "terser-webpack-plugin": "^4.1.0",
         "ts-jest": "^26.3.0",

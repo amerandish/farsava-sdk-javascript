@@ -24,7 +24,7 @@ class SDK {
         this.httpClient = new HttpClient(options.apiKey, options.baseUrl);
         this.speech = new Services.SpeechService(this.httpClient);
         this.voice = new Services.VoiceService(this.httpClient);
-        if (!!options.liveUrl) {
+        if (options.liveUrl) {
             this.live = new Services.LiveService(
                 options.apiKey,
                 options.liveUrl
