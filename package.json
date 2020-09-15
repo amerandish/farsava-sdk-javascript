@@ -14,13 +14,13 @@
         "build:browser:debug": "webpack --config webpack/webpack.browser.js"
     },
     "keywords": [
+        "Farsava",
         "NodeJs",
         "Javascript",
         "API",
         "SDK",
         "ASR",
-        "TTS",
-        "Farsava"
+        "TTS"
     ],
     "author": "Amin Taghikhani<amin@amerandish.com>",
     "devDependencies": {

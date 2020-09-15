@@ -1,14 +1,15 @@
 import fs from "fs";
 
-import * as Farsava from "../../src/farsava";
-import BaseService from "../../src/core/service";
-import {
+import * as Farsava from "../../lib/farsava";
+import BaseService from "../../lib/core/service";
+
+const {
     HealthCheckModel,
     RecognitionAudioModel,
     RecognitionConfigModel,
     ASRRequestModel,
     ASRResponseModel,
-} from "../../src/models";
+} = Farsava.Models;
 
 const config = require("../data/config.json");
 

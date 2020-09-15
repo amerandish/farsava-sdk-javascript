@@ -1,13 +1,13 @@
+import fs from "fs";
 import * as Farsava from "../../src/farsava";
 import BaseService from "../../src/core/service";
-import {
+const {
     HealthCheckModel,
     TTSRequestModel,
     TTSSynthesisInputModel,
     TTSAudioConfigModel,
     TTSVoiceConfigModel,
-} from "../../src/models";
-import fs from "fs";
+} = Farsava.Models;
 const config = require("../data/config.json");
 
 const BASE_URL = config.BaseUrl;
