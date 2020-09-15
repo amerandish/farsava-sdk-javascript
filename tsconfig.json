@@ -1,16 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "lib": ["ES2015", "DOM"],
-        "module": "es6",
+        "module": "CommonJS",
         "declaration": false,
-        "sourceMap": true,
-        "outDir": "./build",
+        "sourceMap": false,
+        "outDir": "./dist",
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true
     },
-    "include": [
-        "./src/farsava.ts"
-    ]
+    "include": ["./src/farsava.ts"]
 }

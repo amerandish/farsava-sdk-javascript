@@ -2,7 +2,7 @@
     "name": "farsava-sdk",
     "version": "0.2.0",
     "description": "farsava javascript sdk",
-    "main": "src/farsava.ts",
+    "main": "lib/farsava.js",
     "types": "typings/farsava.d.ts",
     "homepage": "",
     "license": "LGPL-3.0-or-later",
@@ -20,7 +20,7 @@
         "TTS",
         "Farsava"
     ],
-    "author": "Amin Taghikhani<amin@amerandish.com, amin76taghikhani@gmail.com>",
+    "author": "Amin Taghikhani<amin@amerandish.com>",
     "devDependencies": {
         "@types/axios": "^0.14.0",
         "@types/jest": "^26.0.13",
