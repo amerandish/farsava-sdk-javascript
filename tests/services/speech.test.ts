@@ -1,7 +1,7 @@
 import fs from "fs";
 
-import * as Farsava from "../../lib/farsava";
-import BaseService from "../../lib/core/service";
+import * as Farsava from "../../src/farsava";
+import BaseService from "../../src/core/service";
 
 const {
     HealthCheckModel,
