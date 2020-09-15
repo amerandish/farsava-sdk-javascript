@@ -10,3 +10,4 @@ tests/data
 
 #
 package-lock.json
+coverage
