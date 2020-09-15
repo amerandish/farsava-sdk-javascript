@@ -12,7 +12,7 @@
         "build": "npx tsc",
         "build:browser": "webpack --config webpack/webpack.browser.js -p -m",
         "build:browser:debug": "webpack --config webpack/webpack.browser.js",
-        "lint:src": "eslint src/ --ext .ts"
+        "lint": "eslint src/ --ext .ts"
     },
     "keywords": [
         "Farsava",
