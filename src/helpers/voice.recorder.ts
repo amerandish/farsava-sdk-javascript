@@ -1,8 +1,9 @@
 import * as RecordRTC from "recordrtc";
+
 export default class VoiceRecorder {
     private stream: MediaStream;
     private isPermissionGrant: boolean;
-    private mediaRecorder: RecordRTC;
+    private mediaRecorder: RecordRTC.StereoAudioRecorder;
     private blobs: Blob[];
     constructor() {
         this.stream = null;
@@ -35,7 +36,7 @@ export default class VoiceRecorder {
             mimeType: "audio/wav",
             checkForInactiveTracks: true,
             timeSlice: 1e3,
-            ondataavailable: function (blob: Blob) {
+            ondataavailable: function (blob) {
                 const headerLess = blob.slice(44);
                 cb && cb(headerLess);
                 self.blobs.push(blob);
