@@ -10,7 +10,11 @@
 <script src="farsava-sdk.js" type="text/javascript"></script>
 ```
 
+<div dir='rtl'>
+
 یا
+
+</div>
 
 ```bash
 npm install @amerandish/farsava
