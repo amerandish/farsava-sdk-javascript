@@ -10,6 +10,12 @@
 <script src="farsava-sdk.js" type="text/javascript"></script>
 ```
 
+یا
+
+```bash
+npm install @amerandish/farsava
+```
+
 </div>
 
 ## استفاده

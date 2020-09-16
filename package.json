@@ -4,6 +4,11 @@
     "description": "farsava javascript sdk",
     "main": "lib/farsava.js",
     "types": "typings/farsava.d.ts",
+    "files": [
+        "lib/*",
+        "typings/*"
+    ],
+    "private": false,
     "homepage": "https://github.com/amerandish/farsava-sdk-javascript",
     "repository": {
         "type": "git",
