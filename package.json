@@ -1,6 +1,6 @@
 {
     "name": "@amerandish/farsava",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "farsava javascript sdk",
     "main": "lib/farsava.js",
     "types": "typings/farsava.d.ts",
