@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
 
@@ -11,43 +11,50 @@
     <input type="file" id="targetFile" accept="audio/wav" />
     <button id="btn">Submit</button>
 
-    <script src="../../src/farsava-sdk.min.js"></script>
+    <script src="../../../dist-browser/farsava-sdk.min.js"></script>
     <script>
-        const sdk = new Farsava.SDK({
-            baseUrl: "<REST_API_BASEURL>",
-            liveUrl: "<ASR_LIVE_URL>",
-            apiKey: "<JWT_TOKEN>",
-        });
+        async function main() {
+            const sdk = new Farsava.SDK({
+                baseUrl: "<REST_API_BASEURL>",
+                liveUrl: "<ASR_LIVE_URL>",
+                apiKey: "<JWT_TOKEN>",
+            });
+            const recorder = new Farsava.VoiceRecorder();
+            await recorder.init();
 
-        function readFile(file, cb) {
-            const reader = new FileReader()
-            reader.onloadend = function () {
-                const data = /base64,(.+)/.exec(reader.result)[1]
-                cb(data)
-            }
-            reader.readAsDataURL(file)
+            document
+                .getElementById("btn")
+                .addEventListener("click", async (e) => {
+                    try {
+                        sdk.live.openConnection((err, resData) => {
+                            console.log("err", err);
+                            console.log("data", resData);
+                        });
+                        recorder.createRecorder((buffer) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(buffer);
+                            reader.onloadend = function () {
+                                const base64data = /base64,(.+)/.exec(reader.result)[1]
+                                const chunk = sdk.live.convertBase64ToArrayBuffer(
+                                    base64data
+                                );
+                                console.log('sending')
+                                sdk.live.send(chunk);
+                            }
+                        });
+
+                        recorder.start();
+                        console.log("start");
+                        setTimeout(() => {
+                            console.log("stop");
+                            recorder.stop();
+                        }, 10e3);
+                    } catch (err) {
+                        // handle error
+                    }
+                });
         }
-        document.getElementById('btn').addEventListener('click', e => {
-            try {
-                const targetFile = document.getElementById('targetFile')
-                console.log(targetFile)
-                if (!targetFile.files || !targetFile.files[0]) {
-                    alert('file not load')
-                }
-                readFile(targetFile.files[0], async (data) => {
-                    sdk.live.openConnection((err, resData) => {
-                        console.log("err", err);
-                        console.log("data", resData);
-                    });
-
-                    const CHUNK_SIZE = 16000;
-                    const INTERVAL_DURATION = 1000; // in milliseconds
-                    sdk.live.sendChunkAndInterval(data);
-                })
-            } catch (err) {
-                // handle error
-            }
-        })
+        main();
 
     </script>
 </body>

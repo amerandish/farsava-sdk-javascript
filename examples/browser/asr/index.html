@@ -11,7 +11,7 @@
     <input type="file" id="targetFile" accept="audio/wav" />
     <button id="btn">Submit</button>
 
-    <script src="../../src/farsava-sdk.min.js"></script>
+    <script src="../../../dist-browser/farsava-sdk.min.js"></script>
     <script>
         const sdk = new Farsava.SDK({
             baseUrl: "<REST_API_BASEURL>",
@@ -54,6 +54,7 @@
                     const response = await sdk.speech.asr(model);
                     // response model type is Farsava.Models.ASRResponseModel
                     // handle response
+                    console.log(response)
                 })
             } catch (err) {
                 // handle error
