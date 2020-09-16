@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <input type="file" id="targetFile" accept="audio/wav" />
-    <button id="btn">Submit</button>
+    <button id="btn-start">Start</button>
+    <button id="btn-stop">Stop</button>
 
     <script src="../../../dist-browser/farsava-sdk.min.js"></script>
     <script>
@@ -21,34 +21,47 @@
             });
             const recorder = new Farsava.VoiceRecorder();
             await recorder.init();
-
             document
-                .getElementById("btn")
+                .getElementById("btn-start")
                 .addEventListener("click", async (e) => {
                     try {
                         sdk.live.openConnection((err, resData) => {
                             console.log("err", err);
-                            console.log("data", resData);
+                            const response = JSON.parse(
+                                resData.toString("utf8")
+                            );
+                            console.log(
+                                "data",
+                                response.results[0].transcript
+                            );
                         });
                         recorder.createRecorder((buffer) => {
                             const reader = new FileReader();
                             reader.readAsDataURL(buffer);
                             reader.onloadend = function () {
-                                const base64data = /base64,(.+)/.exec(reader.result)[1]
+                                const base64data = /base64,(.+)/.exec(
+                                    reader.result
+                                )[1];
                                 const chunk = sdk.live.convertBase64ToArrayBuffer(
                                     base64data
                                 );
-                                console.log('sending')
+                                console.log("sending");
                                 sdk.live.send(chunk);
-                            }
+                            };
                         });
 
                         recorder.start();
                         console.log("start");
-                        setTimeout(() => {
-                            console.log("stop");
-                            recorder.stop();
-                        }, 10e3);
+                    } catch (err) {
+                        // handle error
+                    }
+                });
+            document
+                .getElementById("btn-stop")
+                .addEventListener("click", async (e) => {
+                    try {
+                        recorder.stop();
+                        console.log("stop");
                     } catch (err) {
                         // handle error
                     }
