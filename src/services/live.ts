@@ -28,7 +28,7 @@ class LiveService {
         };
         this.client.onmessage = function (ev) {
             console.log("message", ev.data as ASRResponseModel);
-            cb(null, ev);
+            cb(null, ev.data as ASRResponseModel);
         };
     }
 
