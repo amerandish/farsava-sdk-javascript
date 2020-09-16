@@ -4,7 +4,11 @@
     "description": "farsava javascript sdk",
     "main": "lib/farsava.js",
     "types": "typings/farsava.d.ts",
-    "homepage": "",
+    "homepage": "https://github.com/amerandish/farsava-sdk-javascript",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/amerandish/farsava-sdk-javascript"
+    },
     "license": "LGPL-3.0-or-later",
     "scripts": {
         "test": "jest",
